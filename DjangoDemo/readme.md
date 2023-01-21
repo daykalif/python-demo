@@ -57,7 +57,7 @@ pip install django==1.11.11
 - python manage.py startapp book
 
 在虚拟环境中：
-cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo
+cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager 
 运行项目：
 python manage.py runserver
 更改端口号运行：
@@ -91,3 +91,25 @@ Settings/python解释器选择python3.7(python3_django_42)
 
 #### pycharm使用DB Navigator插件连接虚拟db查看db.sqlite3文件，或者用Navicat打开查看
 https://blog.csdn.net/nareta/article/details/106874963
+
+### 运行项目：
+在虚拟环境中：
+cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager 
+运行项目：
+python manage.py runserver
+
+### 1.访问后台登陆系统：
+http://127.0.0.1:8000/admin/login/?next=/admin/
+
+### 2.创建用户
+创建账户密码：
+ cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager 
+ python manage.py createsuperuser
+用户名：admin
+密码：123456abc
+
+### 3.注册模型【注意⚠️：需要将bookmanager设置为Sources Root】
+在子应用的amin.py中注册模型
+
+#### 4.修改模型的方法
+子应用models.py中返回内容
