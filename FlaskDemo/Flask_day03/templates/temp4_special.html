@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{config['DEBUG']}}
+{{config.DEBUG}}
+
+<hr/>
+
+请求上下文中的两个变量：<br/>
+当前路由路径：{{request.url}}<br/>
+session取值：{{session.name}}<br/>
+
+<hr/>
+
+应用上下文中1个变量：<br/>
+g变量：{{g.name}}<br/>
+
+<hr/>
+
+两个可以直接使用的函数:<br/>
+<a href="{{url_for('index')}}">回到首页</a><br/>
+
+获取闪现消息：
+{% for message in get_flashed_messages()%}
+{{message}}
+{% endfor %}
+</body>
+</html>

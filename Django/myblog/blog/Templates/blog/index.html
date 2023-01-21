@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello Blog!</h1>
+<h1>{{hello}}</h1>
+
+<!--第十步：添加新建文章的article_id：0-->
+<h1><a href="{% url 'blog:edit_page' 0 %}">新文章</a></h1>
+{% for article in articles %}
+<a href="{% url 'blog:article_page' article.id %}">{{ article.title }}</a>
+<br/>
+{% endfor %}
+
+</body>
+</html>

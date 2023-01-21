@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--第一步：编写html页面-->
+<!--第六步：编写action中请求的路径{% url 'blog:edit_action' %},这里的blog就是应用名称,这里的edit_action就是blog/urls.py中,第五步中的第三个参数-->
+<form action="{% url 'blog:edit_action' %}" method="post">
+    <!--第七步：凡是post请求的表单都需要添加下面这行代码，防范 跨站请求伪造-->
+    {% csrf_token %}
+    <!--第十步：编辑文章时，将内容放置进input框中-->
+    {% if article %}
+    <!--第十一步：将article.id传给后端<input type="hidden" name="article_id" value="{{article.id}}">-->
+    <input type="hidden" name="article_id" value="{{article.id}}">
+    <label>
+        文章标题<input type="text" name="title" value="{{article.title}}"/>
+    </label>
+    <label>
+        文章内容<input type="text" name="content" value="{{article.content}}"/>
+    </label>
+    {% else %}
+    <input type="hidden" name="article_id" value="0">
+    <label>
+        文章标题<input type="text" name="title"/>
+    </label>
+    <label>
+        文章内容<input type="text" name="content"/>
+    </label>
+    {% endif %}
+    <input type="submit" value="提交">
+</form>
+
+
+<form action="{% url 'blog:edit_action' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="article_id" value="{{article.id | default:'0'}}">
+    <label>
+        文章标题<input type="text" name="title" value="{{article.title}}"/>
+    </label>
+    <label>
+        文章内容<input type="text" name="content" value="{{article.content}}"/>
+    </label>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

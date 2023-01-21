@@ -1,0 +1,2 @@
+import py01_def_multiple_table
+py01_def_multiple_table.multiple_table()

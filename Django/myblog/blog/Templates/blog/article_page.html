@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>article_page</title>
+</head>
+<body>
+<h1>{{article_page.title}}</h1>
+<br/>
+<h3>{{article_page.content}}</h3>
+<br/>
+
+<br/>
+<!--第九步：添加修改文章的article_id-->
+<a href="{% url 'blog:edit_page' article_page.id %}">修改文章{{article_page.id}}</a>
+</body>
+</html>

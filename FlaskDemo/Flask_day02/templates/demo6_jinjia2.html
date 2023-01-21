@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{bbb}}</title>
+</head>
+<body>
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈<br/>
+{{aaa}}<br/>
+{{bbb}}<br/>
+{{ccc}}<br/>
+{{ddd}}<br/>
+
+取值:<br/>
+{{ddd['name']}}<br/>
+{{ddd.id}}<br/>
+{{ccc[0]}}<br/>
+{{ccc.0}}<br/>
+
+计算:<br/>
+{{aaa+ccc.1}}<br/>
+--------------------------------------------------
+
+{{ 'itheima' | upper }}<br/>
+{{ 'ITHEIMA' | lower }}<br/>
+{{ 'itHEIma' | reverse }}<br/>
+
+{#flask特有的#}<br/>
+{{ 'itHEIma' | reverse | upper }}<br/>
+
+--------------------------------------------------
+列表的过滤器<br/>
+{{ccc|last}}<br/>
+长度：{{ccc|length}}<br/>
+排序：{{ccc|sort}}<br/>
+
+默认html的字符串会按照原样显示，可以使用safe进行标志该字符串是安全的
+如果要使用safe标识该字符串是安全的话，那么就会按照html语言格式进行吸纳是或者执行
+{{bbb | escape}} 与 {{bbb}} 相同<br/>
+按html显示:<br/>{{bbb|safe}}
+<br/>
+<hr/>
+使用过滤器传参数：
+总计：{{my_dict_list|sum(attribute='price')}}
+<hr/>
+
+列表反转：{{ccc | lireverse}}
+{{ccc}}
+</body>
+</html>

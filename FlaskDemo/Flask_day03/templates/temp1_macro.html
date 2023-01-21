@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+宏
+<form>
+    <label>用户名：</label><input type="text" name="username"><br>
+    <label>身份证号：</label><input type="text" name="idcard"><br>
+    <label>密码：</label><input type="password" name="password"><br>
+    <label>确认密码：</label><input type="password" name="password2"><br>
+    <input type="submit" value="注册">
+    <label><input type="radio" value="male" name="sex">男</label>
+    <label><input type="radio" value="female" name="sex">女</label>
+    <label><input type="radio" value="people" name="sex">不男不女</label>
+</form>
+
+<hr/>
+
+使用宏实现
+{% macro input(label='',type='text',value='',name='') %}
+<label>{{label}}</label><input type="{{type}}" name="{{name}}"><br>
+{% endmacro %}
+
+<form>
+    {{input('用户名：',name='username')}}
+    <label>用户名：</label><input type="text" name="username"><br>
+
+    {{input('密码：',type='password',name='password')}}
+    {{input('确认密码：',type='password',name='password2')}}
+    {{input(type='submit',value='注册')}}
+</form>
+
+<hr/>
+
+导入宏实现
+{% import 'macro.html' as func%}
+<form>
+    {{func.input('用户名：',name='username')}}
+</form>
+</body>
+</html>
