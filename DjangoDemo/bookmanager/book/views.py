@@ -233,3 +233,16 @@ BookInfo.objects.filter(Q(id__gt=2) | Q(readcount__gt=40))
 # 查询书籍id不为3
 BookInfo.objects.exclude(id=3)
 BookInfo.objects.filter(~Q(id=3))
+
+##################################聚合函数（了解）###########################################
+"""
+Sum，Max，Min，Avg，Count
+
+聚合函数需要使用aggregate
+语法形式是：aggregate(Xxx('字段'))
+"""
+
+# 当前数据的阅读总量
+from django.db.models import Sum, Avg, Max, Min, Count
+
+BookInfo.objects.aggregate(Sum('readcount'))
