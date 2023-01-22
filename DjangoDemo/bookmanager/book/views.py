@@ -192,3 +192,20 @@ BookInfo.objects.filter(pub_date__year='1980')
 # --------------------------------查询1990年1月1日后发布的图书-------------------------------
 BookInfo.objects.filter(pub_date__gt='1990-1-1')
 # BookInfo.objects.filter(pub_date__gt='1990/1/1')  不正确
+
+
+##################################F###########################################
+
+# 两个属性怎么比较 F对象
+"""
+F对象的语法形式
+
+filter(字段名__运算符=F('字段名'))
+"""
+from django.db.models import F
+
+# 查询阅读量大于等于评论量的图书
+BookInfo.objects.filter(readcount__gte=F('commentcount'))
+
+# 查询阅读量大于等于评论量2倍的图书
+BookInfo.objects.filter(readcount__gte=F('commentcount') * 2)
