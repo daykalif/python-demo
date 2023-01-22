@@ -64,13 +64,43 @@ class BookInfo(models.Model):
     # 是否逻辑删除
     is_delete = models.BooleanField(default=False)
 
+    class Meta:
+        # 修改数据库表名
+        db_table = 'bookinfo'
+
     def __str__(self):
         return self.name
 
 
+# 准备人物列表信息的模型类
 class PeopleInfo(models.Model):
-    name = models.CharField(max_length=10)
+    # 有序字典
+    GENDER_CHOICES = (
+        (0, 'male'),
+        (1, 'female')
+    )
+
+    # 名称
+    name = models.CharField(max_length=20, verbose_name='名称')
+
     # 性别
-    gender = models.BooleanField()
+    gender = models.SmallIntegerField(choices=GENDER_CHOICES, default=0, verbose_name='性别')
+
+    # 描述信息
+    description = models.CharField(max_length=200, null=True, verbose_name='描述信息')
+
     # 外键
-    book = models.ForeignKey(BookInfo)
+    book = models.ForeignKey(BookInfo, on_delete=models.CASCADE, verbose_name='图书')
+
+    # 一个黑帮老大 n个小弟   1：n
+    # 黑帮老大背叛死刑
+    # 小弟：
+    #     1.劫狱
+    #     2.小弟自己混
+    #     3.老大死，小弟跟着死
+
+    # 书籍：人物  1：n
+    #  西游记：孙悟空，白骨精
+
+    # 逻辑删除
+    is_delete = models.BooleanField(default=False, verbose_name='逻辑删除')
