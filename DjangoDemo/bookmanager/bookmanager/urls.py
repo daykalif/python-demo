@@ -48,4 +48,8 @@ urlpatterns = [
 
     # 也可以直接在工程的url中路由子应用的页面
     # url('^index/$', index),
+
+    # http://127.0.0.1:8000/pay/order/
+    # 正则需要匹配：pay/order/
+    url(r'^pay/', include('pay.urls')),
 ]
