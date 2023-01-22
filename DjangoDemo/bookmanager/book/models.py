@@ -64,6 +64,9 @@ class BookInfo(models.Model):
     # 是否逻辑删除
     is_delete = models.BooleanField(default=False)
 
+    # django自动为我们添加了一个属性，这个属性就可以通过 书籍 查询 人物信息
+    # peopleinfo_set
+
     class Meta:
         # 修改数据库表名
         db_table = 'bookinfo'

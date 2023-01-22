@@ -252,3 +252,37 @@ BookInfo.objects.aggregate(Sum('readcount'))
 BookInfo.objects.all().order_by('readcount')
 # 降序
 BookInfo.objects.all().order_by('-readcount')
+
+##################################关联查询###########################################
+"""
+书籍和人物的关系是 1：n
+书籍中没有任何关于人物的字段
+
+人物中有关于书籍的字段 book 外键
+
+语法形式：
+    通过书籍查询人物信息（已知 主表数据，关联查询从表数据）
+    主表模型（实例对象），关联模型类名小写_set.all()
+    
+    通过人物查询书籍信息（已知 从表数据，关联查询主表数据）
+    从表模型（实例对象），外键
+"""
+
+# 查询书籍为1的所有人物信息
+# 通过书籍 --> 查询人物
+
+# 1.查询书籍
+book = BookInfo.objects.get(id=1)
+# 2.根据书籍关联人物信息
+book.peopleinfo_set.all()
+
+# 查询人物为1的书籍信息
+# 根据人物 查询书籍
+from book.models import PeopleInfo
+
+# 1.查询人物
+person = PeopleInfo.objects.get(id=1)
+# 2.根据人物关联查询书籍
+# person.book 实例对象
+person.book
+person.book.name
