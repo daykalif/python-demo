@@ -37,5 +37,4 @@ def index(request):
         'books': books
     }
     return render(request, 'index.html', context)
-
     return HttpResponse('index')

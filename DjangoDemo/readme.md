@@ -148,7 +148,7 @@ python manage.py createsuperuser
 
 在工程的settings.py中设置连接数据库
 
-```commandline
+```
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # engine 引擎
@@ -161,7 +161,7 @@ DATABASES = {
 }
 ```
 
-命令行：
+修改过数据库字段或者内容后，需要更新数据库：
 进入路径：/Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager
 python manage.py makemigrations 【先生成迁移文件（不会在数据库中生成表，只会创建一个 数据表和模型的对应）】
 python manage.py migrate 【再迁移（会在数据库中生成表）】
@@ -169,3 +169,53 @@ python manage.py migrate 【再迁移（会在数据库中生成表）】
 在终端mysql中此时：
 show tables; # 查看所有数据表
 desc bookinfo; # 查看bookinfo表信息
+
+insert into bookinfo(name,pub_date,readcount,commentcount,is_delete) values
+('射雕英雄传','1980-5-1',12,34,0),
+('天龙八部','1986-7-24',36,40,0),
+('笑傲江湖','1995-12-24',20,80,0),
+('雪山飞狐','1987-11-11',58,24,0);
+
+insert into peopleinfo(name,gender,book_id,description,is_delete) values
+('郭靖',1,1,'降龙十八掌',0),
+('黄蓉',0,1,'打狗棍法',0),
+('黄药师',1,1,'弹指神通',0),
+('欧阳锋',1,1,'蛤蟆功',0),
+('梅超风',0,1,'九阴白骨爪',0),
+('乔峰',1,2,'降龙十八掌',0),
+('段誉',1,2,'六脉神剑',0),
+('虚竹',1,2,'天山六阳掌',0),
+('王语嫣',0,2,'神仙姐姐',0),
+('令狐冲',1,3,'独孤九剑',0),
+('郭靖',1,1,'降龙十八掌',0),
+('任盈盈',0,3,'弹琴',0),
+('岳不群',1,3,'华山剑法',0),
+('东方不败',0,3,'葵花宝典',0),
+('胡斐',1,4,'胡家刀法',0),
+('苗若兰',0,4,'黄衣',0),
+('程灵素',0,4,'医术',0),
+('袁紫衣',0,4,'六合拳',0);
+
+
+
+select * from bookinfo;
+select * from peopleinfo;
+
+
+
+### shell使用
+类似于ipython的东西
+python manage.py shell
+
+>>> from book.models import BookInfo;
+>>> BookInfo.objects.all();
+
+
+
+
+
+
+
+
+
+

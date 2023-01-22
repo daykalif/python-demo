@@ -53,7 +53,7 @@ class BookInfo(models.Model):
     # pub__data = models.CharField(max_length=10)
 
     # 发布日期
-    pub_data = models.DateField(null=True)
+    pub_date = models.DateField(null=True)
 
     # 阅读量
     readcount = models.IntegerField(default=0)
