@@ -49,7 +49,6 @@ python manage.py shell
 >>> BookInfo.objects.all();
 """
 
-
 ##################################新增数据###########################################
 
 
@@ -73,4 +72,24 @@ BookInfo.objects.create(
     pub_date='2010-01-01'
 )
 
+##################################修改数据###########################################
 
+from book.models import BookInfo
+
+# 方式1
+# 1.查询数据
+# select * from bookinfo where id=1
+book = BookInfo.objects.get(id=1)
+
+# 2.直接修改实例的属性
+book.readcount = 20
+
+# 3.需要手动调用save方法
+book.save()
+
+# 方式2 直接更新
+# filter 过滤
+BookInfo.objects.filter(id=1).update(
+    readcount=100,
+    commentcount=200
+)
