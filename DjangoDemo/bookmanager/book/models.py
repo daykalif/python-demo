@@ -104,3 +104,11 @@ class PeopleInfo(models.Model):
 
     # 逻辑删除
     is_delete = models.BooleanField(default=False, verbose_name='逻辑删除')
+
+    class Meta:
+        # 修改数据库表名
+        db_table = 'peopleinfo'
+        verbose_name = '人物信息'
+
+    def __str__(self):
+        return self.name
