@@ -139,4 +139,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+# django是如何区分 静态资源和动态资源的呢？
+# 就是通过 STATIC_URL
+# 我们在访问静态资源 http://ip:port + STATIC_URL + 文件名
+# django就会认为我们在访问静态资源，这个时候会去静态资源文件夹中进行匹配；否则动态资源会根据路由去匹配
 STATIC_URL = '/static/'
+
+# 告知系统静态文件路径在哪里
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
