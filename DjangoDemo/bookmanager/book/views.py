@@ -93,3 +93,16 @@ BookInfo.objects.filter(id=1).update(
     readcount=100,
     commentcount=200
 )
+
+
+
+##################################删除数据###########################################
+
+# 方式1：（直接删除）
+# 1.先查询出数据
+book = BookInfo.objects.get(id=5)
+# 2.调用删除方法
+book.delete()
+
+# 方式2：（直接删除）
+BookInfo.objects.filter(id=9).delete()
