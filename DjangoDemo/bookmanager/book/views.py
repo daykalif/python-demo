@@ -246,3 +246,9 @@ Sum，Max，Min，Avg，Count
 from django.db.models import Sum, Avg, Max, Min, Count
 
 BookInfo.objects.aggregate(Sum('readcount'))
+
+##################################排序###########################################
+# 默认升序
+BookInfo.objects.all().order_by('readcount')
+# 降序
+BookInfo.objects.all().order_by('-readcount')
