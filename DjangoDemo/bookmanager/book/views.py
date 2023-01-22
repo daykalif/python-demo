@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 
 # Create your views here.
+from book.models import BookInfo
 
 """
 视图
@@ -17,9 +18,24 @@ def index(request):
     # 参数2：模板文件
     # 参数3：context就是传递的参数
 
-    name = '张三',
+    # ------------------------------------------
+    # name = '张三',
+    # context = {
+    #     'name': name
+    # }
+    # return render(request, 'index.html', context)
+    # ------------------------------------------
+
+    # 实现业务逻辑
+    # 1.先把所有书籍查询出来
+    # select * from bookinfo
+    # ORM
+    books = BookInfo.objects.all()
+    # books = [BookInfo(),BookInfo()]
+    # 2.组织数据
     context = {
-        'name': name
+        'books': books
     }
     return render(request, 'index.html', context)
+
     return HttpResponse('index')
