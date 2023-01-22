@@ -218,4 +218,3 @@ python manage.py shell
 
 
 
-

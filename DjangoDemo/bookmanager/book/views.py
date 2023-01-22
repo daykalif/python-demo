@@ -38,3 +38,39 @@ def index(request):
     }
     return render(request, 'index.html', context)
     return HttpResponse('index')
+
+
+"""
+### shell使用
+类似于ipython的东西
+python manage.py shell
+
+>>> from book.models import BookInfo;
+>>> BookInfo.objects.all();
+"""
+
+
+##################################新增数据###########################################
+
+
+from book.models import BookInfo
+
+# 方式1
+# 会把新生成的对象返回给我们
+book = BookInfo(
+    name='python',
+    pub_date='2000-01-01'
+)
+# 需要手动调用save方法
+book.save()
+
+# 方式2 直接入库
+# objects 模型的管理类
+# 我们对模型的 增删改查 都找它
+# 会把新生成的对象返回给我们
+BookInfo.objects.create(
+    name='java',
+    pub_date='2010-01-01'
+)
+
+
