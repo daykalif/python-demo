@@ -1,9 +1,22 @@
-Java或php的MVC模式:
+# GIT提交规范：
+
+- feat或add：新功能
+- update: 更新
+- fix：修复的缺陷
+- docs：文档
+- style： UI样式
+- refactor：代码重构
+- test：增加测试
+- chore：构建过程或辅助工具的变动
+
+### Java或php的MVC模式:
+
 M全拼为Model，主要封装对数据库层的访问，对数据库中的数据进行增、删、改、查操作
 V全拼为View，用于封装结果，生成页面展示的html内容
 C全拼为Controller，用于接受请求，处理业务逻辑，与Model和View交互，返回结果
 
-Django的MVT模式：
+### Django的MVT模式：
+
 M全拼为Model，与MVC中的M功能相同，负责和数据库交互，进行数据处理
 V全拼为View，与MVC中的C功能相同，接收请求，进行业务处理，返回应答
 T全拼为Template，与MVC中的V功能相同，负责封装构造要返回的html
@@ -150,9 +163,9 @@ DATABASES = {
 
 命令行：
 进入路径：/Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager
-python manage.py makemigrations   【先生成迁移文件（不会在数据库中生成表，只会创建一个 数据表和模型的对应）】
-python manage.py migrate    【再迁移（会在数据库中生成表）】
+python manage.py makemigrations 【先生成迁移文件（不会在数据库中生成表，只会创建一个 数据表和模型的对应）】
+python manage.py migrate 【再迁移（会在数据库中生成表）】
 
 在终端mysql中此时：
-  show tables;  # 查看所有数据表
-  desc bookinfo; # 查看bookinfo表信息
+show tables; # 查看所有数据表
+desc bookinfo; # 查看bookinfo表信息
