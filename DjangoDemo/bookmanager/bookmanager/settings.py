@@ -15,6 +15,21 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# __file__ 表示文件的名字
+# settings.py
+
+# os.path.abspath(__file__)
+# abspath 是绝对路径
+# /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager/bookmanager/settings.py
+
+# os.path.dirname(os.path.abspath(__file__))
+# dir 文件夹/文件目录
+# /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager/bookmanager
+
+# os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR
+# /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
