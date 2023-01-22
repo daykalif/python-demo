@@ -111,5 +111,9 @@ http://127.0.0.1:8000/admin/login/?next=/admin/
 ### 3.注册模型【注意⚠️：需要将bookmanager设置为Sources Root】
 在子应用的amin.py中注册模型
 
-#### 4.修改模型的方法
+### 4.修改模型的方法
 子应用models.py中返回内容
+
+### 5.在子应用的view层，添加视图相关方法
+
+### 6.定义路由
