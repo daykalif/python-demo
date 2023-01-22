@@ -194,7 +194,7 @@ BookInfo.objects.filter(pub_date__gt='1990-1-1')
 # BookInfo.objects.filter(pub_date__gt='1990/1/1')  不正确
 
 
-##################################F###########################################
+##################################F对象（了解）###########################################
 
 # 两个属性怎么比较 F对象
 """
@@ -209,3 +209,27 @@ BookInfo.objects.filter(readcount__gte=F('commentcount'))
 
 # 查询阅读量大于等于评论量2倍的图书
 BookInfo.objects.filter(readcount__gte=F('commentcount') * 2)
+
+##################################Q对象（了解）###########################################
+
+# 查询阅读id大于2,并且阅读量大于40的图书
+# 方式1：
+# filter().filter()
+BookInfo.objects.filter(readcount__gt=2).filter(readcount__gt=40)
+
+# 方式2：
+BookInfo.objects.filter(id__gt=2, readcount__gt=40)
+
+# 查询阅读id大于2,或者阅读量大于40的图书
+from django.db.models import Q
+
+"""
+Q(字段名__运算符=值)
+或   Q()|Q()..
+并且 Q()&Q()..
+"""
+BookInfo.objects.filter(Q(id__gt=2) | Q(readcount__gt=40))
+
+# 查询书籍id不为3
+BookInfo.objects.exclude(id=3)
+BookInfo.objects.filter(~Q(id=3))
