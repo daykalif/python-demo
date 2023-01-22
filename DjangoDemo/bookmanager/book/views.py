@@ -94,8 +94,6 @@ BookInfo.objects.filter(id=1).update(
     commentcount=200
 )
 
-
-
 ##################################删除数据###########################################
 
 # 方式1：（直接删除）
@@ -106,3 +104,33 @@ book.delete()
 
 # 方式2：（直接删除）
 BookInfo.objects.filter(id=9).delete()
+
+##################################基本查询###########################################
+
+# get 得到某一个数据 --> get得到的是单一对象
+# all 获取所有的
+# count 个数
+
+# select * from bookinfo where id=1
+# 返回一个对象
+book = BookInfo.objects.get(id=1)
+
+# 查询id 不存在的数据会抛出异常
+book = BookInfo.objects.get(id=100)
+"""
+book.models.DoesNotExist: BookInfo matching query does not exist.
+"""
+
+try:
+    book = BookInfo.objects.get(id=2)
+# except Exception as e:
+#     print(e)
+except BookInfo.DoesNotExist:
+    pass
+
+# all --> all 返回所有结果，是列表
+BookInfo.objects.all()
+
+# 获取count的两种方式：
+BookInfo.objects.all().count()
+BookInfo.objects.count()
