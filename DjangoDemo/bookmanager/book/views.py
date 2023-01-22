@@ -12,4 +12,14 @@ from django.http import HttpRequest, HttpResponse
 
 
 def index(request):
+    # request, template_name, context = None
+    # 参数1：当前请求
+    # 参数2：模板文件
+    # 参数3：context就是传递的参数
+
+    name = '张三',
+    context = {
+        'name': name
+    }
+    return render(request, 'index.html', context)
     return HttpResponse('index')
