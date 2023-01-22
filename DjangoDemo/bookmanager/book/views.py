@@ -286,3 +286,46 @@ person = PeopleInfo.objects.get(id=1)
 # person.book 实例对象
 person.book
 person.book.name
+
+##################################关联查询###########################################
+"""
+书籍和人物的关系是 1：n
+书籍中没有任何关于人物的字段
+
+人物中有关于书籍的字段 book 外键
+
+语法形式：
+    我们需要的是 书籍信息，已知条件是 人物信息
+    我们需要的是 主表数据，已知条件是 从表信息
+    filter(关联模型类名小写__字段__运算符=值)
+    
+    
+    我们需要的是 人物信息，已知条件是 书籍信息
+    我们需要的是 从表数据，已知条件是 主表信息 
+    filter(外键__字段__运算符=值)
+"""
+
+"""
+# 查询图书，要求图书人物为"郭靖"
+# 查询图书，要求图书中人物的描述包含"八"
+"""
+# 查询图书，要求图书人物为"郭靖"
+# 需要的是图书，已知条件是人物
+BookInfo.objects.filter(peopleinfo__name__exact='郭靖')
+# 简写
+BookInfo.objects.filter(peopleinfo__name='郭靖')
+
+# 查询图书，要求图书中人物的描述包含"八"
+BookInfo.objects.filter(peopleinfo__description__contains='八')
+
+"""
+查询书名为"天龙八部"的所有人物
+查询图书阅读量大于50 的所有人物
+"""
+
+# 查询书名为"天龙八部"的所有人物
+PeopleInfo.objects.filter(book__name='天龙八部')
+PeopleInfo.objects.filter(book__name__exact='天龙八部')
+
+# 查询图书阅读量大于30 的所有人物
+PeopleInfo.objects.filter(book__readcount__gt=50)
