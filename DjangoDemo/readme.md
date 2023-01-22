@@ -46,6 +46,8 @@ deactivate
 pip install django==1.11.11
 
 ---
+在虚拟环境中：
+cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager 
 
 ### 创建Django项目
 创建Django项目：【bookmanager为项目名称】
