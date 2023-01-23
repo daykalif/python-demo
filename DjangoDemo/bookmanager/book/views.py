@@ -331,19 +331,30 @@ def index(request):
 
 # ##################################查询集###########################################
 
-# 下述会遍历多次
-[book.id for book in BookInfo.objects.all()]
-[book.id for book in BookInfo.objects.all()]
-[book.id for book in BookInfo.objects.all()]
-[book.id for book in BookInfo.objects.all()]
+# # 下述会遍历多次
+# [book.id for book in BookInfo.objects.all()]
+# [book.id for book in BookInfo.objects.all()]
+# [book.id for book in BookInfo.objects.all()]
+# [book.id for book in BookInfo.objects.all()]
+#
+# # 优化一下,下述只会遍历一次
+# books = BookInfo.objects.all()
+# [book.id for book in books]
+# [book.id for book in books]
+# [book.id for book in books]
+# [book.id for book in books]
+#
+# # 限制查询结果集
+# BookInfo.objects.all()[0:2]
+# BookInfo.objects.all()[:2]
 
-# 优化一下,下述只会遍历一次
+
+# ##################################分页###########################################
+from django.core.paginator import Paginator
 books = BookInfo.objects.all()
-[book.id for book in books]
-[book.id for book in books]
-[book.id for book in books]
-[book.id for book in books]
-
-# 限制查询结果集
-BookInfo.objects.all()[0:2]
-BookInfo.objects.all()[:2]
+# object_list   结果集 / 列表
+# per_page      每页多少条记录
+# object_list,object_list
+p = Paginator(books,2)
+# 获取第几页的数据
+books_page = p.page(1)
