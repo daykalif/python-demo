@@ -39,9 +39,6 @@ def index(request):
     return render(request, 'index.html', context)
     return HttpResponse('index')
 
-
-
-
 #
 # """
 # ### shell使用
