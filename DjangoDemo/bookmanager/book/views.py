@@ -328,3 +328,22 @@ def index(request):
 #
 # # 查询图书阅读量大于30 的所有人物
 # PeopleInfo.objects.filter(book__readcount__gt=50)
+
+# ##################################查询集###########################################
+
+# 下述会遍历多次
+[book.id for book in BookInfo.objects.all()]
+[book.id for book in BookInfo.objects.all()]
+[book.id for book in BookInfo.objects.all()]
+[book.id for book in BookInfo.objects.all()]
+
+# 优化一下,下述只会遍历一次
+books = BookInfo.objects.all()
+[book.id for book in books]
+[book.id for book in books]
+[book.id for book in books]
+[book.id for book in books]
+
+# 限制查询结果集
+BookInfo.objects.all()[0:2]
+BookInfo.objects.all()[:2]

@@ -52,4 +52,5 @@ urlpatterns = [
     # http://127.0.0.1:8000/pay/order/
     # 正则需要匹配：pay/order/
     url(r'^pay/', include('pay.urls')),
+    url(r'^book/', include('book.urls')),
 ]
