@@ -70,8 +70,12 @@ cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookman
 创建子应用：【login,pay,book为子应用名称】
 
 - python manage.py startapp login
+
 - python manage.py startapp pay
-- python manage.py startapp book
+
+  or
+
+- django-admin startapp book
 
 在虚拟环境中：
 cd /Users/wangjiaping/work/project/server_learn/python/coding/DjangoDemo/bookmanager

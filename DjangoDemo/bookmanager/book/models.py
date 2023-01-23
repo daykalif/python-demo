@@ -36,7 +36,7 @@ from django.db import models
     id,name,pub_data,readcount,commentcount,is_delete
 """
 
-
+# 准备书籍列表信息的模型表
 class BookInfo(models.Model):
     """
     1.主键 当前回自动生成
