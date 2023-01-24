@@ -135,16 +135,24 @@ POST方式
 #     return HttpResponse('detail')
 
 
-####################################HttpResponse#######################################
-def detail(request, category_id, book_id):
-    data = {'name': 'itcast'}
-    # HttpResponse
-    # 第一个参数：content         传递字符串，不要传递对象，字典等数据
-    # 第二个参数：statue          HTTP status code must be an integer from 100 to 599.（只能使用系统规定的）
-    # 第三个参数：content_type    是一个MIME类型
-    #                           语法形式是：大类/小类
-    #                           text/html   text/css    text/javascript
-    #                           application/json
-    #                           image/png   image/gif   image/gif
+# ####################################HttpResponse#######################################
+# def detail(request, category_id, book_id):
+#     data = {'name': 'itcast'}
+#     # HttpResponse
+#     # 第一个参数：content         传递字符串，不要传递对象，字典等数据
+#     # 第二个参数：statue          HTTP status code must be an integer from 100 to 599.（只能使用系统规定的）
+#     # 第三个参数：content_type    是一个MIME类型
+#     #                           语法形式是：大类/小类
+#     #                           text/html   text/css    text/javascript
+#     #                           application/json
+#     #                           image/png   image/gif   image/gif
+#
+#     return HttpResponse(data, status=400)
 
-    return HttpResponse(data, status=400)
+
+####################################JsonResponse#######################################
+def detail(request, category_id, book_id):
+    from django.http import JsonResponse
+
+    data = {'name': 'itcast'}
+    return JsonResponse(data, status=400)
