@@ -24,7 +24,13 @@ SECRET_KEY = 'ku+5atykhu8ij!d@s9a!9^@jxbr$tbb@@-qm6zk*sq=q*@mki#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS允许以哪个主机的形式访问后端
+# 默认是127.0.0.1
+# 如果你改变了允许方式，需要将运行的ip/域名添加进来
+# 默认的127.0.0.1需要自己添加才可以再次访问
+#  安全机制 只能以罗列的 来访问
+#  此时启动项目，运行 python manage.py runserver 0:8000   才可以同时访问192.168.50.211:8000 和 127.0.0.1:8000
+ALLOWED_HOSTS = ['192.168.50.211', '127.0.0.1']
 
 # Application definition
 
