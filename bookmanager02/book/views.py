@@ -1,3 +1,5 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -85,9 +87,38 @@ POST方式
 """
 
 
+#
+# ####################################POST表单数据#######################################
+# def detail(request, category_id, book_id):
+#     data = request.POST
+#     print(data)  # <QueryDict: {'username': ['itheima'], 'password': ['123']}>
+#
+#     return HttpResponse('detail')
+
+####################################POST JSON数据#######################################
 def detail(request, category_id, book_id):
-    ####################################POST表单数据#######################################
-    data = request.POST
-    print(data)  # <QueryDict: {'username': ['itheima'], 'password': ['123']}>
+    """ JSON用的是双引号
+    {
+        "username":"itcast",
+        "password":123
+    }
+    """
+    body = request.body
+    print(body)  # b'{\n    "username": "itcast",\n    "password": 123\n}'
+    body_str = body.decode()
+    print(body_str)  # JSON形式的字符串
+    # {
+    #     "username": "itcast",
+    #     "password": 123
+    # }
+
+    """
+    json
+    json.dumps  将字典转化为JSON形式的字符串
+    json.loads  将JSON形式的字符串转化为字典
+    """
+
+    data = json.loads(body_str)
+    print(data)  # {'username': 'itcast', 'password': 123}
 
     return HttpResponse('detail')
