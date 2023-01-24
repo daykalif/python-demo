@@ -182,3 +182,14 @@ urlpatterns = [
 ```
 url(r'^', include('book.urls')),
 ```
+
+### 利用HTTP协议向服务器传参途径
+
+- 提取URL的特定不分，如/weather/beijing/2018，可以在服务器的路由中用正则表达式截取；
+- 查询字符串（query string），形如key1=value1&key2=value2；
+- 请求体（body）中发送的数据，比如表单数据、json、xml；
+- 在http报文的头（header）中；
+
+
+### debug模式运行Django
+https://blog.csdn.net/DraGonBornCrash/article/details/80990458

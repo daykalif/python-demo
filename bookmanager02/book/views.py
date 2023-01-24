@@ -147,7 +147,7 @@ POST方式
 #     #                           application/json
 #     #                           image/png   image/gif   image/gif
 #
-#     return HttpResponse(data, status=400)
+#     return HttpResponse(data, status=400)     # 此处的data就是展示给页面的字符串信息
 
 
 ####################################JsonResponse#######################################
@@ -180,6 +180,13 @@ def detail(request, category_id, book_id):
 
 # 访问：http://127.0.0.1:8000/set_cookie/?username=itcast
 def set_cookie(request):
+    """
+        第一次请求过程
+        1⃣️ .我们的浏览器第一次请求服务器的时候，不会携带任何cookie信息
+        2⃣️ .服务器接收到请求之后，发现 请求中没有任何cookie信息
+        3⃣️ .服务器设置一个cookie，这个cookie设置在响应中
+        4⃣️ .我们的浏览器接收到这个响应之后，发现响应中有cookie信息，浏览器会将cookie信息保存起来
+    """
     # 1.先判断有没有cookie信息【先假设没有】
 
     # 2.获取用户名
@@ -192,3 +199,20 @@ def set_cookie(request):
 
     # 4.返回响应
     return response
+
+
+def get_cookie(request):
+    """
+    第二次及其之后请求过程
+    5⃣️ .当我们的浏览器第二次及其之后的请求都会携带cookie信息
+    6⃣️ .我们的服务器接收到请求之后，会发现请求中携带cookie信息，这样的话就认识是谁的请求了
+
+    """
+    # 1.服务器可以接收（查看）cookie信息
+    cookies = request.COOKIES
+
+    # cookies 就是一个字典
+    username = cookies.get('username')
+
+    # 2.得到用户信息就可以继续其他的业务逻辑了
+    return HttpResponse('get_cookie')  # 此处的'get_cookie'就是展示给页面的字符串信息
