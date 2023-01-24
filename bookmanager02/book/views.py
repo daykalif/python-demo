@@ -33,3 +33,9 @@ def index(request):
     # return redirect(path)
 
     return HttpResponse('index')
+
+
+def detail(request, category_id, book_id):
+    # 1/100/
+    print(category_id, book_id)
+    return HttpResponse('detail')
