@@ -173,6 +173,13 @@ def detail(request, category_id, book_id):
         6⃣️ .我们的服务器接收到请求之后，会发现请求中携带cookie信息，这样的话就认识是谁的请求了
     2.看效果
     3.从http协议角度，深入掌握cookie的流程（原理）
+        第一次
+             1⃣️ .我们是第一次请求服务器，不会携带任何cookie信息，请求头中没有任何cookie信息
+             2⃣️ .服务器会响应设置cookie信息，响应头中有set_cookie信息
+        
+        第二次
+             3⃣️ .我们第二次及其之后的请求都会携带cookie信息，请求头中有cookie信息
+             4⃣️ .（可选）在我们当前的代码中，没有再 在响应头中设置cookie，所以响应头中有set_cookie信息
 
 保存在服务器的数据叫做session
 """
