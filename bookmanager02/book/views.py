@@ -160,6 +160,8 @@ def detail(request, category_id, book_id):
 
 """
 保存在客户端的数据叫做cookie
+    cookie是保存在客户端的
+    cookie是基于域名（IP）的
     0.概念
     1.流程
         第一次请求过程
@@ -202,7 +204,12 @@ def set_cookie(request):
     # 3.因为我们假设没有cookie信息，我们服务器就要设置cookie信息
     response = HttpResponse('set_cookie')
     # key,value
-    response.set_cookie('username', username)
+    # max_age 单位是秒，时间是从服务器接收到这个请求时间 + 秒数 计算之后的时间
+    response.set_cookie('username', username, max_age=3600)
+
+    # 删除cookie的两种方式
+    # response.delete_cookie(key)
+    # response.set_cookie(key, value, max_age=0)
 
     # 4.返回响应
     return response
