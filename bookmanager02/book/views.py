@@ -35,43 +35,59 @@ def index(request):
     return HttpResponse('index')
 
 
+"""
+GET方式
+"""
+# def detail(request, category_id, book_id):
+#     # 1/100/
+#     print(category_id, book_id)
+#
+#     ####################################查询字符串#######################################
+#     """
+#     # http://yun.itheima.com/course/936.html?capid=1&hm=2
+#     以?作为一个分隔
+#     ?前面表示路由
+#     ?后面表示get方式传递的参数 称之为 查询字符串
+#     ?key=value&key=value...
+#
+#     我们在登陆的时候会输入用户名和密码 理论上 用户名和密码都应该以POST方式进行传递；
+#     为了理解GET方式，用用户名和密码进行示例，访问：
+#     http://127.0.0.1:8000/1/200?username=itcast&password=123
+#     """
+#     query_params = request.GET
+#     print(query_params)  # <QueryDict: {'username': ['itcast'], 'password': ['123']}>
+#
+#     username = query_params['username']
+#     password = query_params.get('password')
+#     # print(username, password)     # itcast    123
+#
+#     """
+#     http://127.0.0.1:8000/1/200?username=itcast&username=itheima&password=123
+#
+#     # QueryDict 以普通的字典形式来获取 一键多值的时候，只能获取最后的那一个值
+#     # 我们想获取一键一值的话，需要使用 QueryDict 的get方法
+#     # 我们想获取一键多值的话，需要使用 QueryDict 的list方法
+#     """
+#     query_params = request.GET
+#     print(query_params)  # <QueryDict: {'username': ['itcast', 'itheima'], 'password': ['123']}>
+#     username = query_params['username']
+#     password = query_params.get('password')
+#     # print(username, password)     # itheima    123
+#
+#     users = query_params.getlist('username')
+#     print(users)  # ['itcast', 'itheima']
+#
+#     return HttpResponse('detail')
+
+
+"""
+POST方式
+"""
+
+
 def detail(request, category_id, book_id):
-    # 1/100/
-    print(category_id, book_id)
-
-    ####################################查询字符串#######################################
-    """
-    # http://yun.itheima.com/course/936.html?capid=1&hm=2
-    以?作为一个分隔
-    ?前面表示路由
-    ?后面表示get方式传递的参数 称之为 查询字符串
-    ?key=value&key=value...
-    
-    我们在登陆的时候会输入用户名和密码 理论上 用户名和密码都应该以POST方式进行传递；
-    为了理解GET方式，用用户名和密码进行示例，访问：
-    http://127.0.0.1:8000/1/200?username=itcast&password=123
-    """
-    query_params = request.GET
-    print(query_params)  # <QueryDict: {'username': ['itcast'], 'password': ['123']}>
-
-    username = query_params['username']
-    password = query_params.get('password')
-    # print(username, password)     # itcast    123
-
-    """
-    http://127.0.0.1:8000/1/200?username=itcast&username=itheima&password=123
-    
-    # QueryDict 以普通的字典形式来获取 一键多值的时候，只能获取最后的那一个值
-    # 我们想获取一键一值的话，需要使用 QueryDict 的get方法
-    # 我们想获取一键多值的话，需要使用 QueryDict 的list方法
-    """
-    query_params = request.GET
-    print(query_params)  # <QueryDict: {'username': ['itcast', 'itheima'], 'password': ['123']}>
-    username = query_params['username']
-    password = query_params.get('password')
-    # print(username, password)     # itheima    123
-
-    users = query_params.getlist('username')
-    print(users)  # ['itcast', 'itheima']
+    ####################################POST表单数据#######################################
+    data = request.POST
+    print(data)  # <QueryDict: {'username': ['itheima'], 'password': ['123']}>
 
     return HttpResponse('detail')
