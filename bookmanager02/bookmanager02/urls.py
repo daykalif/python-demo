@@ -18,5 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('book.urls')),
+    # 在include 的第二个参数中添加一个namespace --> 用于防止别名重复，在视图中无法区分使用的别名
+    # 这样的话，我们的name就变成了namespace:name
+    # namespace习惯上使用 子应用名字
+    url(r'^', include('book.urls', namespace='book')),
 ]
