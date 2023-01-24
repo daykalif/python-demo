@@ -156,3 +156,39 @@ def detail(request, category_id, book_id):
 
     data = {'name': 'itcast'}
     return JsonResponse(data, status=400)
+
+
+"""
+保存在客户端的数据叫做cookie
+    0.概念
+    1.流程
+        第一次请求过程
+        1⃣️ .我们的浏览器第一次请求服务器的时候，不会携带任何cookie信息
+        2⃣️ .服务器接收到请求之后，发现 请求中没有任何cookie信息
+        3⃣️ .服务器设置一个cookie，这个cookie设置在响应中
+        4⃣️ .我们的浏览器接收到这个响应之后，发现响应中有cookie信息，浏览器会将cookie信息保存起来
+        
+        第二次及其之后请求过程
+        5⃣️ .当我们的浏览器第二次及其之后的请求都会携带cookie信息
+        6⃣️ .我们的服务器接收到请求之后，会发现请求中携带cookie信息，这样的话就认识是谁的请求了
+    2.看效果
+    3.从http协议角度，深入掌握cookie的流程（原理）
+
+保存在服务器的数据叫做session
+"""
+
+
+# 访问：http://127.0.0.1:8000/set_cookie/?username=itcast
+def set_cookie(request):
+    # 1.先判断有没有cookie信息【先假设没有】
+
+    # 2.获取用户名
+    username = request.GET.get('username')
+
+    # 3.因为我们假设没有cookie信息，我们服务器就要设置cookie信息
+    response = HttpResponse('set_cookie')
+    # key,value
+    response.set_cookie('username', username)
+
+    # 4.返回响应
+    return response

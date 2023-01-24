@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from book.views import index, detail
+from book.views import index, detail, set_cookie
 
 urlpatterns = [
     # name就是给url起一个名字
@@ -13,4 +13,5 @@ urlpatterns = [
 
     # 关键字参数 -- 推荐使用
     url(r'^(?P<category_id>\d+)/(?P<book_id>\d+)/$', detail),
+    url(r'^set_cookie/$', set_cookie),
 ]
