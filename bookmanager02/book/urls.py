@@ -9,5 +9,8 @@ urlpatterns = [
     # http://127.0.0.1:8000/category_id/book_id/
     # 通过分组来获取正则中的数据
     # 我们进行正则分组的参数会传递给视图，定义视图的时候需要定义变量来接收参数
-    url(r'^(\d+)/(100)/$', detail),
+    # url(r'^(\d+)/(\d+)/$', detail),
+
+    # 关键字参数 -- 推荐使用
+    url(r'^(?P<category_id>\d+)/(?P<book_id>\d+)/$', detail),
 ]
