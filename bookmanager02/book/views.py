@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -423,7 +424,7 @@ class CenterView(LoginRequiredMixin, View):
         return HttpResponse('个人中心修改')
 
 
-##############################模板#######################################3
+##############################模板#######################################
 # 3.定义视图
 class HomeView(View):
     def get(self, request):
@@ -432,6 +433,14 @@ class HomeView(View):
 
         # 2.组织数据
         context = {
-            'username': username
+            'username': username,
+            'age': 14,
+            'birthday': datetime.now(),
+            'friends': ['tom', 'jack', 'rose'],
+            'money': {
+                '2019': 12000,
+                '2020': 18000,
+                '2021': 25000,
+            }
         }
         return render(request, 'index.html', context)

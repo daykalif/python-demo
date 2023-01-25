@@ -7,5 +7,26 @@
 <body>
 <!--1.定义html模板-->
 <a href="#">{{ username }}</a>
+<hr>
+我的年龄是 {{ age }}
+我的朋友是 {{ friends }}
+我的girlfriend是 {{ friends.2 }}
+<hr>
+{% for item in friends%}
+<li>{{ item }}{{forloop.counter}}</li>
+{% endfor %}
+<hr>
+我第一年的月薪是 {{ money.2019 }}
+<hr>
+{% if age > 10 %}
+大于10岁
+{% else %}
+不大于10岁
+{% endif %}
+<hr>
+{# 我是注释 #}
+{% comment %}
+我也是注释
+{% endcomment %}
 </body>
 </html>
