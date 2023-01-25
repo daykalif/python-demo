@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from book.views import index, detail, set_cookie, get_cookie
+from book.views import index, detail, set_cookie, get_cookie, set_session, get_session
 
 urlpatterns = [
     # name就是给url起一个名字
@@ -15,6 +15,10 @@ urlpatterns = [
     url(r'^(?P<category_id>\d+)/(?P<book_id>\d+)/$', detail),
     # cookie的第一次请求
     url(r'^set_cookie/$', set_cookie),
-    # cookie的第二次请求
+    # cookie第二次及其之后的请求
     url(r'^get_cookie/$', get_cookie),
+    # session的第一次请求
+    url(r'^set_session/$', set_session),
+    # session第二次及其之后的请求
+    url(r'^get_session/$', get_session),
 ]

@@ -182,8 +182,6 @@ def detail(request, category_id, book_id):
         第二次
              3⃣️ .我们第二次及其之后的请求都会携带cookie信息，请求头中有cookie信息
              4⃣️ .（可选）在我们当前的代码中，没有再 在响应头中设置cookie，所以响应头中有set_cookie信息
-
-保存在服务器的数据叫做session
 """
 
 
@@ -215,6 +213,7 @@ def set_cookie(request):
     return response
 
 
+# http://127.0.0.1:8000/get_cookie/
 def get_cookie(request):
     """
     第二次及其之后请求过程
@@ -230,3 +229,78 @@ def get_cookie(request):
 
     # 2.得到用户信息就可以继续其他的业务逻辑了
     return HttpResponse('get_cookie')  # 此处的'get_cookie'就是展示给页面的字符串信息
+
+
+"""
+保存在服务器的数据叫做session
+    session需要依赖于cookie
+    如果浏览器禁用了cookie，则session不能实现
+    
+    0.概念
+    1.流程
+        第一次请求：
+            1⃣️ .我们第一次请求的时候可以携带一些信息（用户名/密码），cookie中没有任何信息
+            2⃣️ .当我们的服务器接收到这个请求之后，进行用户名和密码的验证，验证没有问题可以设置session信息
+            3⃣️ .在设置session信息的同时(session信息保存在服务器端)，服务器会在响应头中设置一个sessionid的cookie信息
+            4⃣️ .客户端（浏览器）在接收到响应之后，会将cookie信息保存起来（保存sessionid的信息）
+            
+        第二次及其之后的请求：
+            5⃣️ .第二次及其之后的请求都会携带session id信息
+            6⃣️ .当服务器接收到这个请求之后，会获取到sessionid信息，然后进行验证，验证成功，则可以获取session信息（session信息保存在服务器端）
+            
+            
+        在mysql中查看session信息：
+            > mysql -uroot -proot
+            > use book_42_02
+            > show tables;
+            > desc django_session;
+            > select * from django_session;
+    2.效果
+    3.从原理（http）角度
+"""
+
+
+# http://127.0.0.1:8000/set_session/?username=itcast&password=123
+def set_session(request):
+    """
+    第一次请求：
+        1⃣️ .我们第一次请求的时候可以携带一些信息（用户名/密码），cookie中没有任何信息
+        2⃣️ .当我们的服务器接收到这个请求之后，进行用户名和密码的验证，验证没有问题可以设置session信息
+        3⃣️ .在设置session信息的同时(session信息保存在服务器端)，服务器会在响应头中设置一个sessionid的cookie信息
+        4⃣️ .客户端（浏览器）在接收到响应之后，会将cookie信息保存起来（保存sessionid的信息）
+    """
+    # 1.
+    print(request.COOKIES)
+
+    # 2.对用户名和密码进行验证
+    # 假设认为用户名和密码正确
+    user_id = 666
+
+    # 3.设置session信息
+    # request.session 理解为字典
+    request.session['user_id'] = user_id
+
+    # 4.返回响应
+    return HttpResponse('set_session')
+
+
+# http://127.0.0.1:8000/get_session/
+def get_session(request):
+    """
+    第二次及其之后的请求：
+        5⃣️ .第二次及其之后的请求都会携带session id信息
+        6⃣️ .当服务器接收到这个请求之后，会获取到sessionid信息，然后进行验证，验证成功，则可以获取session信息（session信息保存在服务器端）
+    """
+
+    # 1.第二次及其之后的请求都会携带session id信息
+    print(request.COOKIES)
+
+    # 2.当服务器接收到这个请求之后，会获取到sessionid信息
+    # 进行验证，验证成功，则可以获取session信息（session信息保存在服务器端）
+
+    # request.session 字典
+    user_id = request.session['user_id']
+    user_id = request.session.get('user_id')
+
+    # 3.返回响应
+    return HttpResponse('get_session')
