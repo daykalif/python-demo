@@ -10,6 +10,7 @@
 <hr>
 我的年龄是 {{ age }}
 我的朋友是 {{ friends }}
+我总共有{{ friends|length }}个朋友
 我的girlfriend是 {{ friends.2 }}
 <hr>
 {% for item in friends%}
@@ -28,5 +29,12 @@
 {% comment %}
 我也是注释
 {% endcomment %}
+<hr>
+<!--过滤器的语法形式：变量|过滤器:'参数'-->
+当前时间是{{ birthday|date:'Y 年 m 月 d 日' }}
+<hr>
+<!--我的简介是{{ desc|safe }}-->
+<hr>
+我没有定义的变量{{ abcde|default:'我就是默认值～～～' }}
 </body>
 </html>

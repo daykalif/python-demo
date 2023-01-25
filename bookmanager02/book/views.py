@@ -441,6 +441,7 @@ class HomeView(View):
                 '2019': 12000,
                 '2020': 18000,
                 '2021': 25000,
-            }
+            },
+            'desc': '<script>alert("hot")</script>'
         }
         return render(request, 'index.html', context)
