@@ -327,3 +327,76 @@ def get_session(request):
 
     # 3.返回响应
     return HttpResponse('get_session')
+
+
+"""
+登陆页面
+    GET请求是获取登陆的页面
+    POST请求是验证登陆（用户名和密码是否正确）
+"""
+
+
+# GET请求是获取登陆的页面
+def show_login(requset):
+    return render(requset)
+
+
+# POST请求是验证登陆（用户名和密码是否正确）
+def veri_login(request):
+    return redirect('首页')
+
+
+# 我想有2个视图，变为1个视图
+def login(request):
+    # 我们需要区分业务逻辑
+    if request.method == 'GET':
+        # GET请求是获取登陆的页面
+        return render(request)
+    else:
+        # POST请求是验证登陆（用户名和密码是否正确）
+        return redirect('首页')
+
+
+"""
+面向对象
+    类视图 是采用的面向对象的思路
+    1.定义视图类
+        1⃣️ .继承自View（from django.views import View）
+        2⃣️ .不同的请求方式有不同的业务逻辑
+            类视图的方法就直接采用http的请求名字作为我们的函数名.例如：get,post,put,delete...
+        3⃣️ .类视图的方法的第二个参数，必须是请求实例对象
+           类视图的方法必须有返回值，返回值是HttpResponse及其子类
+    2.类视图的url引导
+"""
+from django.views import View
+
+
+class BookView(View):
+    def get(self, request):
+        return HttpResponse('get')
+
+    def post(self, request):
+        return HttpResponse('post')
+
+    def put(self, request):
+        return HttpResponse('put')
+
+
+class Person(object):
+    # cls是谁？ --> Person类
+    @classmethod
+    def say(cls):
+        pass
+
+    # slef是谁？ --> 实例对象
+    def eat(self):
+        pass
+
+    @staticmethod
+    def run():
+        pass
+
+
+Person.say()
+p = Person()
+p.eat()

@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from book.views import index, detail, set_cookie, get_cookie, set_session, get_session
+from book.views import BookView
 
 urlpatterns = [
     # name就是给url起一个名字
@@ -13,12 +14,18 @@ urlpatterns = [
 
     # 关键字参数 -- 推荐使用
     url(r'^(?P<category_id>\d+)/(?P<book_id>\d+)/$', detail),
+
     # cookie的第一次请求
     url(r'^set_cookie/$', set_cookie),
     # cookie第二次及其之后的请求
     url(r'^get_cookie/$', get_cookie),
+
     # session的第一次请求
     url(r'^set_session/$', set_session),
     # session第二次及其之后的请求
     url(r'^get_session/$', get_session),
+
+    # url的第一个参数是正则
+    # url的第二个参数是视图函数名
+    url(r'^login/$', BookView.as_view()),
 ]
