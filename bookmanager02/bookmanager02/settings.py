@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 注册中间件
     'book.middleware.simple_middleware',
+    'book.middleware.simple_middleware2',
 ]
 
 ROOT_URLCONF = 'bookmanager02.urls'
