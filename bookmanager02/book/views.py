@@ -232,10 +232,22 @@ def get_cookie(request):
 
 
 """
+问题1：我换了浏览器，还能获取到session信息吗？
+        - 不可以
+        【暂不考虑下述情况：】
+            跨浏览器Session获取：由于不同浏览器HttpSession不同，需要在服务端中增加一些代码，使得两个不同浏览器可以找到相同HttpSession
+            具体做法是：
+                - 当访问A页面时把HttpSession保存到全局map中，以HttpSession.getid()这个全局唯一字符串作为key，HttpSession作为Value，
+                - B页面的url链接增加一个参数sid=HttpSession.getid()，服务端在解析b页面时取到sid的值，到全局map中找出HttpSession，这样A页面B页面可以使用相同HttpSession对象，然后再判定登录状态就不会有问题。
+        
+问题2：我不换浏览器，删除sessionid，则获取不到session数据
+问题3：再去执行set_session的时候，会重新生成sessionid，session值超时会过期
+
+
 保存在服务器的数据叫做session
     session需要依赖于cookie
     如果浏览器禁用了cookie，则session不能实现
-    
+
     0.概念
     1.流程
         第一次请求：
@@ -256,6 +268,14 @@ def get_cookie(request):
             > desc django_session;
             > select * from django_session;
     2.效果
+        第一次请求：
+             1⃣️ .第一次请求，在请求头中没有携带任何cookie信息
+             2⃣️ .我们在设置session的时候，其实session做了2件事：
+                    第一件：将数据保存在数据库中
+                    第二件：设置一个cookie信息，这个cookie信息是以sessionid为key
+                    cookie肯定会以响应的形式，在响应头中出现
+        第二次及其之后的请求：
+             3⃣️ .都会携带cookie信息，特别是sessionid
     3.从原理（http）角度
 """
 
@@ -278,6 +298,9 @@ def set_session(request):
 
     # 3.设置session信息
     # request.session 理解为字典
+    # 设置session的时候，其实session做了2件事：
+    #     第一件：将数据保存在数据库中
+    #     第二件：设置一个cookie信息，这个cookie信息是以sessionid为key
     request.session['user_id'] = user_id
 
     # 4.返回响应
