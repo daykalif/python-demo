@@ -13,9 +13,8 @@
 我总共有{{ friends|length }}个朋友
 我的girlfriend是 {{ friends.2 }}
 <hr>
-{# django forloop jinja2 loop #}
 {% for item in friends%}
-<li>{{ item }}{{ loop.index }}</li>
+<li>{{ item }}{{forloop.counter}}</li>
 {% endfor %}
 <hr>
 我第一年的月薪是 {{ money.2019 }}
@@ -27,16 +26,15 @@
 {% endif %}
 <hr>
 {# 我是注释 #}
-{# jinja2没有多行注释 #}
+{% comment %}
+我也是注释
+{% endcomment %}
 <hr>
 <!--过滤器的语法形式：变量|过滤器:'参数'-->
-{# 当前时间是{{ birthday|date:'Y 年 m 月 d 日' }} #}
-
-{# pycharm认为此处有错，但实际是没错的。因为pycharm默认的模板引擎是django自带的引擎，我们需要告知pycharm现在的引擎是jinja2 #}
-当前时间是{{ date(birthday,'Y 年 m 月 d 日') }}
+当前时间是{{ birthday|date:'Y 年 m 月 d 日' }}
 <hr>
 <!--我的简介是{{ desc|safe }}-->
 <hr>
-{# 我没有定义的变量{{ abcde|default:'我就是默认值～～～' }} #}
+我没有定义的变量{{ abcde|default:'我就是默认值～～～' }}
 </body>
 </html>

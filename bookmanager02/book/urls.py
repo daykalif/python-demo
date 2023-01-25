@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from book.views import index, detail, set_cookie, get_cookie, set_session, get_session, HomeView
-from book.views import BookView, CenterView
+from book.views import index, detail, set_cookie, get_cookie, set_session, get_session
+from book.views import HomeView, BookView, CenterView
 
 urlpatterns = [
     # name就是给url起一个名字
