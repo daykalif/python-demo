@@ -400,3 +400,20 @@ class Person(object):
 Person.say()
 p = Person()
 p.eat()
+
+"""
+个人中心页面
+GET方式 展示 个人中心
+POST实现个人中心信息的修改
+定义视图类
+"""
+# http://127.0.0.1:8000/center/ --> 没有登陆信息，会跳转到http://127.0.0.1:8000/accounts/login/?next=/center/ 登陆界面
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class CenterView(LoginRequiredMixin, View):
+    def get(self, request):
+        return HttpResponse('个人中心展示')
+
+    def post(self, request):
+        return HttpResponse('个人中心修改')

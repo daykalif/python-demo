@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from book.views import index, detail, set_cookie, get_cookie, set_session, get_session
-from book.views import BookView
+from book.views import BookView, CenterView
 
 urlpatterns = [
     # name就是给url起一个名字
@@ -28,4 +28,7 @@ urlpatterns = [
     # url的第一个参数是正则
     # url的第二个参数是视图函数名
     url(r'^login/$', BookView.as_view()),
+
+    # 个人中心展示
+    url(r'^center/$', CenterView.as_view()),
 ]
