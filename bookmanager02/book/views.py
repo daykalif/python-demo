@@ -444,4 +444,5 @@ class HomeView(View):
             },
             'desc': '<script>alert("hot")</script>'
         }
+        return render(request, 'detail.html')
         return render(request, 'index.html', context)
