@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from book.views import index, detail, set_cookie, get_cookie, set_session, get_session
+from book.views import index, detail, set_cookie, get_cookie, set_session, get_session, HomeView
 from book.views import BookView, CenterView
 
 urlpatterns = [
@@ -31,4 +31,7 @@ urlpatterns = [
 
     # 个人中心展示
     url(r'^center/$', CenterView.as_view()),
+
+    # 4.定义路由
+    url(r'^index/$', HomeView.as_view()),
 ]

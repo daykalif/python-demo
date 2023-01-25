@@ -421,3 +421,17 @@ class CenterView(LoginRequiredMixin, View):
 
     def post(self, request):
         return HttpResponse('个人中心修改')
+
+
+##############################模板#######################################3
+# 3.定义视图
+class HomeView(View):
+    def get(self, request):
+        # 1.获取数据
+        username = request.GET.get('username')
+
+        # 2.组织数据
+        context = {
+            'username': username
+        }
+        return render(request, 'index.html', context)
