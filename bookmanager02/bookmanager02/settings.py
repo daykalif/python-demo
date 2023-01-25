@@ -45,6 +45,13 @@ INSTALLED_APPS = [
     'book.apps.BookConfig',
 ]
 
+# 中间件
+"""
+Django中的中间件是一个轻量级、底层的插件系统，可以介入Django的请求和响应处理过程，修改Django的输入或输出。
+中间件的设计为开发者提供了一种无侵入式的开发方式，增强了Django框架的健壮性。
+
+我们可以使用中间件，在Django处理视图的不同阶段对输入或输出进行干预
+"""
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 注册中间件
+    'book.middleware.simple_middleware',
 ]
 
 ROOT_URLCONF = 'bookmanager02.urls'

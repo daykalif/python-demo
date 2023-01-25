@@ -7,6 +7,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 
+def demo(request):
+    return HttpResponse('demodemo')
+
+
 def index(request):
     """
     reverse 就是通过name来动态获取路径（路由）
