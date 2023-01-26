@@ -20,9 +20,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="ed70a081-65c1-4ff1-8857-8f9f69e62049" object-ref="schemas/main/tables/django_session" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="ed70a081-65c1-4ff1-8857-8f9f69e62049" dataset="main.django_session" active-filter-id="a9f1273b-d85a-4e81-b541-671beda9dea3">
