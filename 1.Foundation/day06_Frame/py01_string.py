@@ -19,4 +19,3 @@ print(hello_str.find("llo"))
 print(hello_str.replace("world", "python"))
 print(hello_str)
 
-
