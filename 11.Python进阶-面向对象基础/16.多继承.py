@@ -2,6 +2,15 @@
 案例：演示多继承。
 
 需求：小明是个爱学习的好孩子，想学习更多的摊煎饼果子技术，于是，在百度搜索到黑马程序员学校，报班来培训学习摊煎饼果子技术。
+
+扩展：MRO机制。
+
+解释：
+    Python中有MRO机制，可以查看某个对象，在调用函数时的 顺序，即：先找哪个类，后找哪个类。
+
+格式：
+    类名.mro()
+    类名.__mro__
 """
 
 
@@ -36,3 +45,8 @@ class Prentice(School, Master):  # 继承默认是 从左往右，就近原则
 xm = Prentice()
 print(xm.kongfu)
 xm.make_cake()
+print("-" * 30)
+
+# 5. 查看mro机制的结果.
+print(Prentice.mro())  # Prentice → School → Master → object
+print(Prentice.__mro__)  # Prentice → School → Master → object
